@@ -16,16 +16,17 @@ public class Main {
                 new Audi(2014, "mechanics", "A7", 65, 255, "Blue")
         );
 
-        carInfo(listCar);
-        System.out.println("----------------------------------------------------------------");
-        hateGreen(listCar);
-        System.out.println("----------------------------------------------------------------");
+        System.out.println("------------------------------Вывод информации о машинах!------------------------------");
+        carInfo(listCar, 2006);
+        System.out.println("-----------------------------Проверка метода смены цвета автомобиля!-----------------------------");
+        changeColor(listCar,"Green","Red");
+        System.out.println("-----------------------------------Проверка собственного метода!-----------------------------------");
         refill(listCar);
     }
 
-    private static void carInfo(List<Car> list){
+    private static void carInfo(List<Car> list, int year){
        for (Car car: list){
-           if (car.getYearOfRelease() <= 2006){
+           if (car.getYearOfRelease() <= year){
                System.out.println("устаревший авто");
            } else {
                System.out.println(car);//сработал из-за переопределения toString
@@ -33,10 +34,10 @@ public class Main {
        }
     }
 
-    private static void hateGreen(List<Car> list){
+    private static void changeColor(List<Car> list, String oldColor, String newColor){
         for (Car car: list){
-            if (car.getColor().equals("Green")){
-                car.setColor("Red");
+            if (car.getColor().toLowerCase().equals(oldColor.toLowerCase())){
+                car.setColor(newColor);
             }
             System.out.println(car);
         }
